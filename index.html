@@ -5,22 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>why are you here</title>
     <style>
+        :root {
+            --bg: #0d0d0d;
+            --grid: #1a1a1a;
+            --panel: #1e1e2e;
+            --panel-border: #282a36;
+            --accent: #8aafff;
+            --text: #e5e5e5;
+            --title-bg: #1a1a2e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+            font-family: "Courier New", Courier, monospace;
             margin: 0;
-            padding: 20px;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background:
+                linear-gradient(90deg, transparent 0 24px, var(--grid) 24px 25px),
+                linear-gradient(180deg, transparent 0 24px, var(--grid) 24px 25px),
+                var(--bg);
+            background-size: 25px 25px;
+            color: var(--text);
         }
+
+        .window {
+            width: min(520px, 92vw);
+            border: 3px solid var(--panel-border);
+            background: var(--panel);
+            box-shadow: 8px 8px 0 #000000;
+        }
+
+        .titlebar {
+            background: var(--title-bg);
+            color: var(--text);
+            padding: 6px 10px;
+            font-weight: bold;
+            text-transform: lowercase;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--panel-border);
+        }
+
+        .controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--accent);
+            background: var(--title-bg);
+        }
+
+        .content {
+            padding: 22px 24px 26px;
+            text-align: center;
+        }
+
         h1 {
-            margin-top: 50px;
+            margin: 0 0 10px;
+            font-size: 28px;
+            letter-spacing: 1px;
         }
+
         p {
-            margin-top: 20px;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .links {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed #444;
+        }
+
+        .links a {
+            display: inline-block;
+            margin: 0 8px;
+            color: var(--accent);
+            text-decoration: underline;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .links a:hover {
+            color: #a8c5ff;
+            text-decoration: none;
+        }
+
+        .status {
+            border-top: 2px solid var(--panel-border);
+            padding: 6px 10px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--title-bg);
+            color: var(--text);
+        }
+
+        .blink {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            animation: blink 1.2s steps(1) infinite;
+            margin-left: 6px;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <h1>kitarsin</h1>
-    <p>my personal void</p>
+    <main class="window" aria-label="personal site window">
+        <div class="titlebar">
+            <span>kitarsin.exe</span>
+            <div class="controls" aria-hidden="true">
+                <span class="btn"></span>
+                <span class="btn"></span>
+                <span class="btn"></span>
+            </div>
+        </div>
+        <div class="content">
+            <h1>kitarsin</h1>
+            <p>my personal void</p>
+            <div class="links">
+                <a href="https://open.spotify.com/user/0rke1wlmrk7wexsl8rgeglgax?si=5045b11b01ea4688" target="_blank">spotify</a>
+            </div>
+        </div>
+        <div class="status">
+            <span>status: online</span>
+            <span>2026<span class="blink"></span></span>
+        </div>
+    </main>
 </body>
 </html>
