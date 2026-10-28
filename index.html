@@ -475,19 +475,19 @@
                         <summary class="project-summary">
                             <span class="project-number">01</span>
                             <span class="project-identity"><span class="project-icon" aria-hidden="true">◈</span><span class="project-title-block"><span class="project-kind">InsomniCode · Thesis</span><span class="project-name">ODIN</span></span></span>
-                            <span class="project-teaser">InsomniCode’s intelligent tutoring system. I built most of its website and backend.</span>
+                            <span class="project-teaser">A gamified C# tutor that detects when learners are stuck or guessing. I built most of its website and backend.</span>
                             <span class="project-toggle" aria-hidden="true"></span>
                         </summary>
                         <div class="project-details">
                             <div class="detail-copy">
                                 <p class="detail-label">InsomniCode · Thesis project</p>
-                                <p class="detail-text">ODIN is an intelligent tutoring system for practicing C# bitwise and logical operators. It analyzes coding behavior to spot when a learner is stuck or repeatedly guessing, then offers scaffolded interventions.</p>
+                                <p class="detail-text">ODIN is a gamified intelligent tutoring system that helps CS and IT students practice C# bitwise and logical operators. It analyzes keystroke dynamics and compilation behavior to detect wheel-spinning (repeated failure) and gaming the system (guessing or spamming hints), then provides scaffolded interventions.</p>
                                 <p class="detail-label">Website · Primary developer</p>
                                 <p class="detail-text">I built most of the learner-facing website with React and TypeScript and host it on Vercel.</p>
                                 <p class="detail-label">Core API · Primary backend developer</p>
                                 <p class="detail-text">I developed most of the ASP.NET Core backend, maintained its Supabase PostgreSQL database, and handled backend hosting on Railway.</p>
-                                <p class="detail-text">The Core API processes student code submissions with Roslyn analysis, behavioral signals, knowledge tracing, and adaptive interventions.</p>
-                                <ul class="detail-list"><li>Roslyn code analysis</li><li>Bayesian knowledge tracing</li><li>Adaptive hints</li></ul>
+                                <p class="detail-text">The Core API runs a five-stage pipeline for each code submission: it classifies behavior, diagnoses C# array misconceptions with Roslyn, updates Bayesian mastery estimates, checks for learner helplessness, and selects a scaffolded NPC hint.</p>
+                                <ul class="detail-list"><li>Five-state behavior analysis</li><li>Roslyn array diagnostics</li><li>Bayesian mastery tracking</li><li>Scaffolded NPC hints</li></ul>
                             </div>
                             <div class="detail-side">
                                 <div class="detail-meta"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vercel</span><span class="tag">C#</span><span class="tag">ASP.NET Core 8</span><span class="tag">Supabase / PostgreSQL</span><span class="tag">Railway</span></div>
