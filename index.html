@@ -475,22 +475,22 @@
                         <summary class="project-summary">
                             <span class="project-number">01</span>
                             <span class="project-identity"><span class="project-icon" aria-hidden="true">◈</span><span class="project-title-block"><span class="project-kind">InsomniCode · Thesis</span><span class="project-name">ODIN</span></span></span>
-                            <span class="project-teaser">A gamified C# tutor that detects when learners are stuck or guessing. I built most of its website and backend.</span>
+                            <span class="project-teaser">A web-based C# arrays tutor with a React student portal, embedded Godot game, and connected API.</span>
                             <span class="project-toggle" aria-hidden="true"></span>
                         </summary>
                         <div class="project-details">
                             <div class="detail-copy">
                                 <p class="detail-label">InsomniCode · Thesis project</p>
-                                <p class="detail-text">ODIN is a gamified intelligent tutoring system that helps CS and IT students practice C# bitwise and logical operators. It analyzes keystroke dynamics and compilation behavior to detect wheel-spinning (repeated failure) and gaming the system (guessing or spamming hints), then provides scaffolded interventions.</p>
+                                <p class="detail-text">ODIN is a web-based, gamified intelligent tutoring system for college-level C# arrays. Its React and TypeScript student portal embeds a Godot game and connects to the Core API for code submissions, progress tracking, and contextual feedback. Current tasks focus on array problem-solving, especially off-by-one and out-of-bounds errors.</p>
                                 <p class="detail-label">Website · Primary developer</p>
-                                <p class="detail-text">I built most of the learner-facing website with React and TypeScript and host it on Vercel.</p>
+                                <p class="detail-text">I built most of the learner-facing React and TypeScript web client, which includes student and instructor experiences, Supabase authentication and profile data, and the embedded Godot Web game. I host the website on Vercel.</p>
                                 <p class="detail-label">Core API · Primary backend developer</p>
-                                <p class="detail-text">I developed most of the ASP.NET Core backend, maintained its Supabase PostgreSQL database, and handled backend hosting on Railway.</p>
-                                <p class="detail-text">The Core API runs a five-stage pipeline for each code submission: it classifies behavior, diagnoses C# array misconceptions with Roslyn, updates Bayesian mastery estimates, checks for learner helplessness, and selects a scaffolded NPC hint.</p>
-                                <ul class="detail-list"><li>Five-state behavior analysis</li><li>Roslyn array diagnostics</li><li>Bayesian mastery tracking</li><li>Scaffolded NPC hints</li></ul>
+                                <p class="detail-text">I developed most of the ASP.NET Core backend, maintain its Supabase PostgreSQL database, and handle backend hosting on Railway.</p>
+                                <p class="detail-text">The API authenticates requests with Supabase JWTs and processes submissions through behavior classification, Roslyn-based C# array diagnostics, mastery tracking, affective-score recording for research and administration, and intervention selection. It returns contextual feedback, hints, NPC dialogue, rewards, and progress updates. Its behavior and affective signals support instruction and research; they are not clinical diagnoses.</p>
+                                <ul class="detail-list"><li>C# array diagnostics</li><li>Behavior and submission telemetry</li><li>Mastery tracking</li><li>Contextual hints and NPC dialogue</li></ul>
                             </div>
                             <div class="detail-side">
-                                <div class="detail-meta"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vercel</span><span class="tag">C#</span><span class="tag">ASP.NET Core 8</span><span class="tag">Supabase / PostgreSQL</span><span class="tag">Railway</span></div>
+                                <div class="detail-meta"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Godot Web</span><span class="tag">Vercel</span><span class="tag">C#</span><span class="tag">ASP.NET Core 8</span><span class="tag">Supabase / PostgreSQL</span><span class="tag">Railway</span></div>
                                 <a class="repo-link live-link" href="https://insomnicode-odin.vercel.app" target="_blank" rel="noopener noreferrer"><svg class="repo-link-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 6.5h.01M5.5 6.5h.01M13 15l2.5-2.5L18 15"/></svg>LIVE WEBSITE <span aria-hidden="true">↗</span></a>
                                 <a class="repo-link website-repo-link" href="https://github.com/kitarsin/ODIN" target="_blank" rel="noopener noreferrer"><svg class="repo-link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6l2 2h8v11H4z"/><path d="m9 12-2 2 2 2m6-4 2 2-2 2"/></svg>WEBSITE REPOSITORY <span aria-hidden="true">↗</span></a>
                                 <a class="repo-link api-repo-link" href="https://github.com/kitarsin/odinroot" target="_blank" rel="noopener noreferrer"><svg class="repo-link-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01M12 7h4m-4 10h4"/></svg>CORE API REPOSITORY <span aria-hidden="true">↗</span></a>
