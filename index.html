@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0a0e17">
     <meta name="description" content="Kristian Lawrence Villaraza (kitarsin), software developer building web apps, APIs, and browser extensions with TypeScript and C#/.NET.">
     <title>Kristian Lawrence Villaraza — Software Developer</title>
-    <link rel="icon" href="fav.ico" type="image/x-icon" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
+    <link rel="icon" href="fav.ico?v=2" type="image/x-icon" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
     <script>
         // Apply the system theme before the page paints.
         (() => {
@@ -195,6 +195,7 @@
             text-decoration: none;
             transition: transform .18s ease, border-color .18s ease, background .18s ease;
         }
+        button.button { cursor: pointer; }
         .button:hover { transform: translateY(-2px); border-color: var(--blue); background: #1b2c43; }
         .button.primary { border-color: rgba(108,184,255,.68); color: #07111c; background: linear-gradient(135deg, var(--cyan), var(--blue)); font-weight: 700; }
         .button.primary:hover { border-color: #d3f5ff; background: linear-gradient(135deg, #b6efff, #83c5ff); }
@@ -208,6 +209,16 @@
         .current-work { display: grid; gap: 8px; padding-top: 24px; border-top: 1px solid var(--line); }
         .current-work a { width: fit-content; color: var(--ink); font-size: 15px; text-decoration-thickness: 1px; text-decoration-color: var(--line-bright); text-underline-offset: 5px; }
         .current-work a:hover { color: var(--blue); }
+
+        .resume-viewer { margin-top: 15px; overflow: hidden; border: 1px solid rgba(87,131,187,.36); border-radius: 10px; background: var(--panel-solid); box-shadow: 0 18px 48px rgba(0,0,0,.18); }
+        .resume-viewer[hidden] { display: none; }
+        .resume-viewer-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+        .resume-viewer-head .section-kicker { margin-bottom: 4px; }
+        .resume-viewer-head h2 { font-size: clamp(20px, 3vw, 26px); }
+        .resume-viewer-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+        .resume-viewer iframe { display: block; width: 100%; height: min(82vh, 900px); min-height: 620px; border: 0; background: #f1efe9; }
+        .resume-fallback { margin: 0; padding: 12px 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+        .resume-fallback a { color: var(--blue); }
 
         .window-bar { display: flex; align-items: center; justify-content: space-between; min-height: 39px; padding: 0 14px; border-bottom: 1px solid var(--line); color: var(--muted); background: rgba(18,25,39,.8); font: 10px var(--mono); }
         .window-title { display: inline-flex; align-items: center; gap: 8px; }
@@ -359,6 +370,11 @@
             .detail-meta { width: 100%; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
             .repo-link { width: 100%; min-height: 48px; padding: 0 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel-raised); }
             .repo-link:hover { border-color: var(--line-bright); color: var(--blue); background: var(--panel); }
+            .resume-viewer-head { align-items: flex-start; flex-direction: column; padding: 17px; }
+            .resume-viewer-actions { width: 100%; }
+            .resume-viewer-actions .button { flex: 1 1 auto; justify-content: center; }
+            .resume-viewer iframe { height: 72vh; min-height: 520px; }
+            .resume-fallback { padding: 12px 17px; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -446,6 +462,7 @@
                 <div class="hero-actions">
                     <a class="button primary" href="#projects">explore projects <span aria-hidden="true">↓</span></a>
                     <a class="button" href="https://github.com/kitarsin" target="_blank" rel="noopener noreferrer">GitHub profile <span aria-hidden="true">↗</span></a>
+                    <button class="button resume-toggle" type="button" aria-expanded="false" aria-controls="resume-viewer"><span class="resume-toggle-label">View résumé</span><span aria-hidden="true">↓</span></button>
                 </div>
             </div>
             <aside class="profile-panel" aria-label="Technologies and current work">
@@ -460,6 +477,18 @@
                     <a href="https://github.com/kitarsin/lingualoom" target="_blank" rel="noopener noreferrer">LinguaLoom on GitHub <span aria-hidden="true">↗</span></a>
                 </div>
             </aside>
+        </section>
+
+        <section class="resume-viewer" id="resume-viewer" aria-labelledby="resume-viewer-title" hidden>
+            <div class="resume-viewer-head">
+                <div><p class="section-kicker">PDF preview</p><h2 id="resume-viewer-title" tabindex="-1">Kristian Lawrence Villaraza — Résumé</h2></div>
+                <div class="resume-viewer-actions">
+                    <a class="button" href="resume.pdf" download>Download PDF <span aria-hidden="true">↓</span></a>
+                    <button class="button resume-close" type="button">Close preview <span aria-hidden="true">×</span></button>
+                </div>
+            </div>
+            <iframe src="resume.pdf#view=FitH" title="Kristian Lawrence Villaraza's résumé PDF" loading="lazy"></iframe>
+            <p class="resume-fallback">If the preview doesn’t load in your browser, <a href="resume.pdf" download>download the PDF</a>.</p>
         </section>
 
         <section class="projects" id="projects" aria-labelledby="projects-title">
@@ -566,6 +595,25 @@
             const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
             setTheme(nextTheme);
         });
+
+        const resumeToggle = document.querySelector(".resume-toggle");
+        const resumeToggleLabel = resumeToggle.querySelector(".resume-toggle-label");
+        const resumeClose = document.querySelector(".resume-close");
+        const resumeViewer = document.querySelector("#resume-viewer");
+        const setResumeViewer = (isOpen) => {
+            resumeViewer.hidden = !isOpen;
+            resumeToggle.setAttribute("aria-expanded", String(isOpen));
+            resumeToggleLabel.textContent = isOpen ? "Hide résumé" : "View résumé";
+            if (isOpen) {
+                resumeViewer.scrollIntoView({ behavior: "smooth", block: "start" });
+                requestAnimationFrame(() => document.querySelector("#resume-viewer-title").focus({ preventScroll: true }));
+            } else {
+                resumeToggle.scrollIntoView({ behavior: "smooth", block: "center" });
+                resumeToggle.focus({ preventScroll: true });
+            }
+        };
+        resumeToggle.addEventListener("click", () => setResumeViewer(resumeViewer.hidden));
+        resumeClose.addEventListener("click", () => setResumeViewer(false));
 
         const updateWorkspace = () => {
             const marker = window.innerHeight * 0.34;
